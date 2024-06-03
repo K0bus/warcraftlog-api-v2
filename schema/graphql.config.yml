@@ -1,0 +1,5 @@
+schema:
+  - https://www.warcraftlogs.com/api/v2/client:
+      headers:
+        Authorization: Bearer ${TOKEN}
+documents: '**/*.graphql'
