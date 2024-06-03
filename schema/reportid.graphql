@@ -1,0 +1,23 @@
+query{
+    reportData {
+        report(code: "${code}"){
+            archiveStatus{
+                archiveDate,
+                isAccessible,
+                isArchived,
+            }
+            code,
+            endTime,
+            startTime,
+            fights{
+                difficulty,
+                encounterID,
+                fightPercentage,
+                kill,
+                averageItemLevel,
+                bossPercentage
+            }
+
+        }
+    }
+}
