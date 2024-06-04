@@ -1,9 +1,8 @@
-const OAuth = require("oauth");
+const {OAuth2} = require("oauth");
 const fs = require("node:fs");
 
 const graphql_endpoint = "https://www.warcraftlogs.com/api/v2/client";
 
-let oauth2;
 let access_token;
 
 module.exports = {
@@ -19,14 +18,13 @@ module.exports = {
 function connect(client_id, client_secret)
 {
     return new Promise(function (resolve){
-        const OAuth2 = OAuth.OAuth2;
-        oauth2 = new OAuth2(client_id,
+        let client = new OAuth2(client_id,
             client_secret,
             'https://www.warcraftlogs.com/',
             'oauth/authorize',
             'oauth/token',
             null);
-        oauth2.getOAuthAccessToken(
+        client.getOAuthAccessToken(
             '',
             {'grant_type': 'client_credentials'},
             function (e, token) {
@@ -44,7 +42,7 @@ function getCharacterByName(name, server, region)
         args["server"] = server;
         args["region"] = region;
         request("character", args).then(json => {
-            resolve(json);
+            resolve(json.data.characterData.character);
         })
     });
 }
@@ -56,7 +54,7 @@ function getCharacterById(id)
         let args = [];
         args["id"] = id;
         request("characterid", args).then(json => {
-            resolve(json);
+            resolve(json.data.characterData.character);
         })
     });
 }
@@ -69,7 +67,7 @@ function getGuildByName(name, server, region)
         args["server"] = server;
         args["region"] = region;
         request("guild", args).then(json => {
-            resolve(json);
+            resolve(json.data.guildData.guild);
         })
     });
 }
@@ -81,7 +79,7 @@ function getGuildById(id)
         let args = [];
         args["id"] = id;
         request("guildid", args).then(json => {
-            resolve(json);
+            resolve(json.data.guildData.guild);
         })
     });
 }
@@ -94,7 +92,7 @@ function getReportsByGuild(name, server, region)
         args["server"] = server;
         args["region"] = region;
         request("reports", args).then(json => {
-            resolve(json);
+            resolve(json.data.reportData.reports);
         })
     });
 }
@@ -106,7 +104,7 @@ function getReportByCode(code)
         let args = [];
         args["code"] = code;
         request("reportid", args).then(json => {
-            resolve(json);
+            resolve(json.data.reportData.report);
         })
     });
 }
