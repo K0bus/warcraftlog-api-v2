@@ -1,6 +1,6 @@
 {
   "name": "warcraftlog-api-v2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "https://github.com/K0bus/warcraftlog-api-v2"
   },
-  "keywords": ["warcraftlog", "wow", "api", "nodejs"],
+  "keywords": [
+    "warcraftlog",
+    "wow",
+    "api",
+    "nodejs"
+  ],
   "author": "K0bus",
   "license": "Apache-2.0",
   "dependencies": {
