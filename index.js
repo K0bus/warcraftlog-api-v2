@@ -18,7 +18,7 @@ module.exports = {
 
 function connect(client_id, client_secret)
 {
-    return new Promise(function (resolve, reject){
+    return new Promise(function (resolve){
         const OAuth2 = OAuth.OAuth2;
         oauth2 = new OAuth2(client_id,
             client_secret,
@@ -29,7 +29,7 @@ function connect(client_id, client_secret)
         oauth2.getOAuthAccessToken(
             '',
             {'grant_type': 'client_credentials'},
-            function (e, token, refresh_token, results) {
+            function (e, token) {
                 access_token = token;
                 resolve(true);
             });
