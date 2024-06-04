@@ -1,14 +1,18 @@
 {
   "name": "warcraftlog-api-v2",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --env-file=.env index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/K0bus/warcraftlog-api-v2"
+  },
+  "keywords": ["warcraftlog", "wow", "api", "nodejs"],
+  "author": "K0bus",
+  "license": "Apache-2.0",
   "dependencies": {
     "oauth": "^0.10.0"
   }
