@@ -31,7 +31,6 @@ function connect(client_id, client_secret)
             {'grant_type': 'client_credentials'},
             function (e, token, refresh_token, results) {
                 access_token = token;
-                //console.log('bearer: ', access_token);
                 resolve(true);
             });
     });
