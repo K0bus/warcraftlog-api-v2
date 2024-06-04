@@ -9,33 +9,6 @@ query{
                 id,
                 name
             }
-            attendance(limit: 25){
-                data{
-                    code,
-                    players{
-                        name,
-                    }
-                    startTime,
-                    zone{
-                        id,
-                        name,
-                        difficulties{
-                            id,
-                            name,
-                        }
-                        expansion{
-                            id,
-                            name,
-                        }
-                        partitions{
-                            compactName,
-                            default,
-                            id,
-                            name
-                        }
-                    }
-                }
-            }
             members{
                 per_page,
                 current_page,
