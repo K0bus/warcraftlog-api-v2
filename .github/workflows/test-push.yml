@@ -47,6 +47,9 @@ jobs:
           tag_name: ${{ steps.check.outputs.version }}
           release_name: Release ${{ steps.check.outputs.version }}
           body: |
-            **Full Changelog**: https://github.com/K0bus/warcraftlog-api-v2/commits/${{ steps.check.outputs.version }}
+            ## Instalation
+            `npm install warcraftlog-api-v2@${{ steps.check.outputs.version }}`
+            ## Changelog
+            https://github.com/K0bus/warcraftlog-api-v2/commits/${{ steps.check.outputs.version }}
           draft: false
           prerelease: true
