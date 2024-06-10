@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node --env-file=.env index.js"
+    "test": "node --env-file=.env test.js"
   },
   "repository": {
     "type": "git",
