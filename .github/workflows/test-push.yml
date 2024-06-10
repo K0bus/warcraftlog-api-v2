@@ -24,3 +24,25 @@ jobs:
         run: |
           npm ci
           npm test
+      - name: Check if version has been updated
+        id: check
+        uses: EndBug/version-check@v2
+      - name: Create release
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+      - name: Log when unchanged
+        if: steps.check.outputs.changed == 'false'
+        run: 'echo "No version change :/"'
+      - name: Create Release
+        id: create_release
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ steps.check.outputs.version }}
+          release_name: Release ${{ steps.check.outputs.version }}
+          body: |
+            **Full Changelog**: https://github.com/K0bus/warcraftlog-api-v2/commits/${{ steps.check.outputs.version }}
+          draft: false
+          prerelease: true
