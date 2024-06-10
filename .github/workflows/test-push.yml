@@ -1,0 +1,26 @@
+name: Test API
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 21
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo WL_CLIENT_ID="${{ secrets.WL_CLIENT_ID }}" >> .env
+          echo WL_CLIENT_SECRET="${{ secrets.WL_CLIENT_SECRET }}" >> .env
+          echo WL_BEARER="${{ secrets.WL_BEARER }}" >> .env
+          cat .env
+      - name: 'Testing NPM'
+        run: |
+          npm ci
+          npm test
