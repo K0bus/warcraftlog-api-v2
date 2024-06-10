@@ -12,7 +12,15 @@ query{
             level,
             hidden,
             guilds{
-                name
+                id,
+                name,
+                server {
+                    slug,
+                    name,
+                    region {
+                        slug,
+                    }
+                }
             }
             guildRank
         }
